@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Расчет ширин экрана и соотношения шрифтов</title>
+	<script>
+		function calc_width(){
+			var width_douter = document.getElementById("douter_width").value;
+			var width_parent = document.getElementById("perent_width").value;
+			var result = (Number(width_douter) / Number(width_parent))*100;
+			result = (Math.round(result*100))/100;
+			if( width_douter == "" || width_parent == "" ) alert("Введите значения во все поля");
+			else document.getElementById("width").innerHTML = "Ширина дочернего элемента должна быть " + result + "%";
+		}
+
+		function calc_font(){
+			var font_douter = document.getElementById("douter_font").value;
+			var font_parent = document.getElementById("perent_font").value;
+			var result = (Number(font_douter) / Number(font_parent));
+			result = (Math.round(result*100))/100;
+			if( font_douter == "" || font_parent == "" ) alert("Введите значения во все поля");
+			else document.getElementById("font").innerHTML = "Величина шрифта дочернего элемента должна быть " + result + " em";
+		}
+	</script>
+	<style>
+
+		body {
+			font-family: sans-serif;
+			background: #EBEBEB;
+		}
+		.left, .right {
+			float: left;
+			margin: 100px 50px;
+		}
+		
+		form {
+			text-align: center;
+		}
+
+
+		form input[type="text"]{
+			border: 1px solid;
+			border-radius: 5px;
+			padding-left: 10px;
+			font-weight: bold;
+			line-height: 30px;
+			width: 400px;
+			margin-bottom: 10px;
+		}
+
+		form input[type="submit"]{
+			border: 1px solid;
+			border-radius: 5px;
+			font-weight: bold;
+			line-height: 30px;
+			padding: 5px 20px;
+			font-size: 1.2em;
+		}
+
+		form input[type="submit"]:hover{
+			cursor: pointer;
+			background: #FFF0F5;
+		}
+
+		form input[type="submit"]:active{
+			box-shadow: 0px 0px 5px 1px inset;
+		}
+
+
+		.left div, .right div {
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		p {
+			font-size: 1.5em;
+			width: 400px;
+			margin: 24px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="left">
+		<h2>Расчёт ширины дочернего элемента в %</h2>
+		<form name="width_screen" action="#">
+			<input type="text" id="douter_width" placeholder="Введите ширину дочернего элемента в пикселях">
+			<br>
+			<input type="text" id="perent_width" placeholder="Введите ширину родительского элемента в пикселях">
+			<br>
+			<input type="submit" value="Рассчитать" onclick="calc_width()">
+		</form>
+	
+		<div>
+			<p id="width"></p>
+		</div>
+	</div>
+
+	<div class="right">
+		<h2>Расчёт величины шрифта дочернего элемента в em</h2>
+		<form name="font_size" action="#">
+
+			<input type="text" id="douter_font" placeholder="Введите величину шрифта дочернего элемента в пикселях">
+			<br>
+
+			<input type="text" id="perent_font" placeholder="Введите величину шрифта родительского элемента">
+			<br>
+			<input type="submit" value="Рассчитать" onclick="calc_font()">
+		</form>
+
+		<div>
+			<p id="font"></p>
+		</div>
+	</div>
+</body>
+</html>
